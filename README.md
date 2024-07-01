@@ -1,6 +1,6 @@
-Программа для получения веса с терминала CAS CI-200
+Программа для получения и отображения веса с терминала CAS CI-200 на веб страницу. Клиент-серверный вариант.
 
-Receiving weight from the CAS CI-200 terminal to a web page
+Receiving weight from the CAS CI-200 terminal to a web page. Client-server version.
 
 ![2024-07-01_16-22-12](https://github.com/Alexeusss/CasWeightWeb/assets/173336356/e554d5cd-da6b-426e-98f8-8ac7abf7382d)
 
