@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Весовой терминал</title>
+    <style>
+        #data-box {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 300px;
+            height: 100px;
+            background-color: black;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        #controls {
+            position: absolute;
+            top: 120px;
+            left: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="data-box">Ожидание данных...</div>
+    <div id="controls">
+        <select id="com-port">
+            <option value="">Выберите COM порт</option>
+            {% for port in ports %}
+                <option value="{{ port }}">{{ port }}</option>
+            {% endfor %}
+        </select>
+        <button onclick="startReading()">Начать чтение</button>
+    </div>
+    <script>
+        function fetchData() {
+            fetch('/data')
+                .then(response => response.json())
+                .then(data => {
+                    const dataBox = document.getElementById('data-box');
+                    dataBox.innerHTML = data.message;
+                    dataBox.style.color = data.color;
+                });
+        }
+
+        function startReading() {
+            const port = document.getElementById('com-port').value;
+            if (port) {
+                fetch('/start', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ port: port }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "started") {
+                        setInterval(fetchData, 1000);
+                    }
+                });
+            } else {
+                alert("Выберите COM порт");
+            }
+        }
+    </script>
+</body>
+</html>
