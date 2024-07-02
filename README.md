@@ -19,4 +19,4 @@ Receiving weight from the CAS CI-200 terminal to a web page. Client-server versi
 ```sh
 python main.py
 
-Перейти в браузере на локальный IP адрес с указанием порта 5000, например http://127.0.0.1:5000
+Перейти в браузере на IP адрес сервера с указанием порта 5000, например http://127.0.0.1:5000
