@@ -14,7 +14,7 @@ Receiving weight from the CAS CI-200 terminal to a web page. Client-server versi
 - ОС: Windows
 - Python: 3.11
 
-## Запуск
+## Запуск скрипта
 
 ```sh
 python main.py
